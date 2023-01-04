@@ -1,11 +1,11 @@
 <template>
   <div>
-    <ul>
-      <li v-for="item in completed" :key="item">
-        <v-checkbox :label="item"></v-checkbox>
-      </li>
-    </ul>
-  </div>
+     <v-list class="p-0" single-line dense>
+        <v-list-item v-for="item in completed" :key="item.id" dense>
+              <v-checkbox :id="item.id" :label="item.task"></v-checkbox>
+        </v-list-item>
+       </v-list>
+   </div>
 </template>
 
 <script>
@@ -13,7 +13,14 @@ export default {
   name: 'Completed',
   data() {
     return {
-      completed: ['list 1', 'list 2', 'list 3']
+      completed: [
+        {
+          id:5,task:'Code personal app', done:true,
+        },
+        {
+          id:6,task:'Walk dogs', done:true,
+        },
+      ]
     }
   },
 };

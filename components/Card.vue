@@ -8,33 +8,19 @@
           Checklist
         </h2>
           <div class="flex flex-row space-x-10 mt-4">
-              <div @click="activeTab = 'Pending'" class="bg-gray-400 rounded-full px-2 text-white cursor-pointer">Pending</div>
-              <div @click="activeTab = 'Completed'" class="cursor-pointer">Completed</div>
+              <div @click="activeTab = 'Pending'" class="cursor-pointer" :class="{'rounded-full px-4 py-1 text-white bg-gray-400': activeTab === 'Pending'}">Pending</div>
+              <div @click="activeTab = 'Completed'" class="cursor-pointer" :class="{'rounded-full px-4 py-1 text-white bg-gray-400': activeTab === 'Completed'}">Completed</div>
           </div>
 
           <component :is="activeTab"/>
-
-            <v-row class="text-center" justify="center">
-              <v-col cols="12" md="8">
-                <v-text-field 
-                  depressed
-                  v-model="newTask"
-                  label="Add items here"
-                  solo
-                >
-                </v-text-field>
-              </v-col>
-
-              <v-col cols="12" md="4">
-                <v-btn
-                  class="blue--text "
-                  depressed
-                  elevation="2"
-                  rounded
-                >Add Item</v-btn>
-              </v-col>
-
-            </v-row>
+          
+          <div class="flex flex-row ">
+            <input type="textfield" placeholder="Add an item here" class="outline-none" v-model="newTask">
+            <button
+              class="rounded-full text-white outline outline-none border-0 bg-blue-500 h-8 w-20 "
+              @click="create"
+            >Add Item</button>
+          </div>
 
       </div>
     </div>
@@ -48,24 +34,16 @@ export default {
     return {
       newTask: '',
       activeTab:'Pending',
-      isActive: false
     };
   },
   methods: {
    create(){
-
+      
    }
   },
 }
 </script>
 
 <style>
-.none{
-  background-color: aqua;
-};
-.activeStyle{
-  background-color: #9ca3af;
-  border-radius: 100%;
-  cursor: pointer;
-}
+
 </style>
