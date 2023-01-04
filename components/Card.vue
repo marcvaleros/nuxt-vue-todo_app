@@ -15,7 +15,7 @@
           <component :is="activeTab"/>
           
           <div class="flex flex-row ">
-            <input type="text" placeholder="Add an item here" class="outline-none" v-model="newTask" @keypress.enter="addTasK">
+            <input type="text" placeholder="Add an item here" class="outline-none" v-model="newTask">
             <button
               class="rounded-full text-white outline outline-none border-0 bg-blue-500 h-8 w-20 "
               @click="addTask"
