@@ -1,7 +1,7 @@
 <template>
   <div>
      <v-list class="p-0" single-line dense>
-        <v-list-item v-for="item in tasks" :key="item.task" dense>
+        <v-list-item v-for="item in completed" :key="item.task" dense>
               <v-checkbox :label="item.task"></v-checkbox>
         </v-list-item>
        </v-list>
@@ -16,10 +16,11 @@ export default {
       tasks: []
     }
   },
-  mounted () {
-    this.tasks = this.$store.getters.getCompleted;
-    console.log(this.tasks);
-  },
+  computed:{
+    completed(){
+      return this.$store.getters.completed;
+    }
+  }
 };
 </script>
 
