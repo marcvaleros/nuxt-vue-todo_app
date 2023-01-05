@@ -1,7 +1,7 @@
 <template>
   <div>
      <v-list class="p-0" single-line dense>
-        <v-list-item v-for="item in pending" :key="item.task" dense>
+        <v-list-item v-for="item in tasks" :key="item.task" dense>
               <v-checkbox  :label="item.task"></v-checkbox>
         </v-list-item>
        </v-list>
@@ -16,14 +16,8 @@ export default {
       tasks: []
     }
   },
-  computed: {
-    pending() {
-      let done =  this.tasks.filter((task) => task.done === false);
-      return done;
-    }
-  },
   mounted () {
-    this.tasks = this.$store.state.tasks;
+    this.tasks =  this.$store.getters.getPending;
     console.log(this.tasks);
   },
 };

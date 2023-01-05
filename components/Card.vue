@@ -41,6 +41,7 @@ export default {
       if(this.newTask){
         this.$store.commit('ADD_TASK',this.newTask);
         this.newTask = '';
+        console.log(this.$store.state.tasks);
       }
    }
   },

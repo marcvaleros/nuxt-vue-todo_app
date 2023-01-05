@@ -1,8 +1,8 @@
 <template>
   <div>
      <v-list class="p-0" single-line dense>
-        <v-list-item v-for="item in completed" :key="item.task" dense>
-              <v-checkbox  :label="item.task"></v-checkbox>
+        <v-list-item v-for="item in tasks" :key="item.task" dense>
+              <v-checkbox :label="item.task"></v-checkbox>
         </v-list-item>
        </v-list>
    </div>
@@ -16,14 +16,8 @@ export default {
       tasks: []
     }
   },
-  computed: {
-    completed() {
-      let done =  this.tasks.filter((task) => task.done === true);
-      return done;
-    }
-  },
   mounted () {
-    this.tasks = this.$store.state.tasks;
+    this.tasks = this.$store.getters.getCompleted;
     console.log(this.tasks);
   },
 };

@@ -1,3 +1,5 @@
+import Vue from "vue";
+
 export const state = () => ({
     tasks:[
         {
@@ -15,9 +17,24 @@ export const state = () => ({
       ]
 });
 
+export const actions ={
+  add_new_task({commit}, task){
+    commit('ADD_TASK',task);
+  },
+  remove_tasks({commit}, task){
+    commit('REMOVE_TASK',task);
+  },
+  toggle_status({commit}, task){
+    commit('SET_TASK_STATUS',task);
+  }
+};
+
 export const mutations ={
   ADD_TASK(state, task){
-    state.tasks.push = ({content: task, done: false});
+
+    let newtask = {task: task, done: false};
+    Vue.set(state.tasks,state.tasks.length, newtask);
+    // state.tasks = {...state.tasks, newtask};
   },
   REMOVE_TASK(state,task){
     state.tasks.splice(state.tasks.indexOf(task),1);
@@ -25,4 +42,13 @@ export const mutations ={
   SET_TASK_STATUS(state,task){
     task.done = !task.done;
   }
+}
+
+export const getters = {
+  getPending(state) {
+    return state.tasks;
+  },
+  getCompleted(state) {
+    return state.tasks;
+  },
 }
