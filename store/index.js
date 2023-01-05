@@ -28,7 +28,6 @@ export const mutations ={
   },
   SET_TASK_STATUS(state,id){
     state.tasks[id].done = !state.tasks[id].done;
-    // console.log(state.tasks[id].task);
   }
 }
 
