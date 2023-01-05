@@ -3,30 +3,32 @@ import Vue from "vue";
 export const state = () => ({
     tasks:[
         {
-          task:'Clean the room', done:false,
+          id: 0,task:'Clean the room', done:false,
         },
         {
-          task:'Wash clothes', done:false,
+          id: 1,task:'Wash clothes', done:false,
         },
         {
-          task:'Dry clothes', done:true,
+          id: 2,task:'Dry clothes', done:true,
         },
         {
-          task:'Study final exam', done:false,
+          id: 3,task:'Study final exam', done:false,
         },
       ]
 });
 
 export const mutations ={
   ADD_TASK(state, task){
-    let newtask = {task: task, done: false};
-    Vue.set(state.tasks,state.tasks.length, newtask);
+    let id = state.tasks.length;
+    let newtask = {id:id, task: task, done: false};
+    Vue.set(state.tasks,id,newtask);
   },
   REMOVE_TASK(state,task){
     state.tasks.splice(state.tasks.indexOf(task),1);
   },
-  SET_TASK_STATUS(state,task){
-    task.done = !task.done;
+  SET_TASK_STATUS(state,id){
+    state.tasks[id].done = !state.tasks[id].done;
+    // console.log(state.tasks[id].task);
   }
 }
 
