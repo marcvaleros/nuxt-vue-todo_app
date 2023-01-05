@@ -22,7 +22,6 @@ export default {
   },
   methods: {
     toggleStatus(id){
-        console.log(id);
         this.$store.commit('SET_TASK_STATUS', id);
     },
   },
